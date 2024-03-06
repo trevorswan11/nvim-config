@@ -20,6 +20,8 @@ Plug 'https://github.com/preservim/nerdtree' " File tree
 " Plug 'https://github.com/neoclide/coc.nvim' " Autocomplete
 
 call plug#end()
+" Airline Config
+
 
 " NERDTree Config
 nnoremap <leader>e :NERDTreeFocus<CR>
@@ -29,3 +31,4 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " Start nerd tree on open and move to last window
 autocmd VimEnter * NERDTree | wincmd p
+
