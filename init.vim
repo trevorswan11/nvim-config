@@ -15,8 +15,8 @@ let mapleader = " "
 " Plugin Install
 call plug#begin()
 
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/vim-airline/vim-airline' " Mode status bar
+Plug 'https://github.com/preservim/nerdtree' " File tree
 " Plug 'https://github.com/neoclide/coc.nvim'
 
 call plug#end()
