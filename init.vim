@@ -32,3 +32,4 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " Start nerd tree on open and move to last window
 autocmd VimEnter * NERDTree | wincmd p
 
+"Terminal Config
