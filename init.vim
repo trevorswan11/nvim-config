@@ -17,7 +17,7 @@ call plug#begin()
 
 Plug 'https://github.com/vim-airline/vim-airline' " Mode status bar
 Plug 'https://github.com/preservim/nerdtree' " File tree
-" Plug 'https://github.com/neoclide/coc.nvim'
+" Plug 'https://github.com/neoclide/coc.nvim' " Autocomplete
 
 call plug#end()
 
