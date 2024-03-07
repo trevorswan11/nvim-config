@@ -15,6 +15,8 @@ set clipboard+=unnamedplus
 " QOL Mappings
 let mapleader = " "
 nnoremap ; :
+nnoremap b w
+nnoremap B W
 
 " Plugin Install
 call plug#begin()
