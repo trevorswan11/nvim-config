@@ -34,7 +34,8 @@ Plug 'https://github.com/junegunn/fzf.vim' " File Finder - 1
 Plug 'https://github.com/junegunn/fzf' " File Finder - 2
 Plug 'https://github.com/prabirshrestha/vim-lsp' " lsp - 1
 Plug 'https://github.com/mattn/vim-lsp-settings' "lsp - 2
-
+Plug 'https://github.com/uiiaoo/java-syntax.vim' " java syntax
+Plug 'https://github.com/vim-syntastic/syntastic' " Syntastic
 call plug#end()
 
 " COC config
@@ -94,6 +95,7 @@ endfunction
 
 autocmd FileType java inoremap <buffer> <silent> /* <Esc>:call AddBlockComment()<CR>
 
+" LSP Config
 if executable('pylsp')
     " pip install python-lsp-server
     au User lsp_setup call lsp#register_server({
@@ -140,3 +142,19 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Ignore Syntastic serialization
+let g:syntastic_java_checkers = ['java']
+let g:syntastic_java_java_checkers = ['java', 'checkstyle']
+let g:syntastic_java_checkstyle_args = ['--ignore=serial']
+
