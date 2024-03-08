@@ -2,3 +2,12 @@ CDEP
 AMEX
 Speedtype
 AGY
+Pcard
+CWRU
+args
+java
+println
+trebuchet
+junit
+io
+IOException

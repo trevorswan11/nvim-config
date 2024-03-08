@@ -9,11 +9,12 @@ set softtabstop
 set mouse=a
 set clipboard+=unnamedplus
 set autochdir
-set spell
 
 " QOL Mappings
 let mapleader = " "
 nnoremap ; :
+vnoremap ; :
+vnoremap <Leader>pa :s/\\/\//g<CR>
 
 " Plugin Install
 call plug#begin()
@@ -36,6 +37,8 @@ Plug 'https://github.com/mattn/vim-lsp-settings' "lsp - 2
 Plug 'https://github.com/uiiaoo/java-syntax.vim' " java syntax
 Plug 'https://github.com/vim-syntastic/syntastic' " Syntastic
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin' " NERDTree git
+Plug 'https://github.com/iamcco/markdown-preview.nvim' " MD Preview
+
 call plug#end()
 
 " COC config
@@ -181,3 +184,4 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_java_checkers = ['java']
 let g:syntastic_java_java_checkers = ['java', 'checkstyle']
 let g:syntastic_java_checkstyle_args = ['--ignore=serial']
+
