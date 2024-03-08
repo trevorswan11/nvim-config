@@ -1,6 +1,3 @@
-" Set auto path
-cd C:\Users\Trevor\OneDrive\Documents\CWRU\Code
-
 " QOL Configurations
 set number
 set relativenumber
@@ -11,6 +8,8 @@ set smarttab
 set softtabstop
 set mouse=a
 set clipboard+=unnamedplus
+set autochdir
+set spell
 
 " QOL Mappings
 let mapleader = " "
@@ -36,6 +35,7 @@ Plug 'https://github.com/prabirshrestha/vim-lsp' " lsp - 1
 Plug 'https://github.com/mattn/vim-lsp-settings' "lsp - 2
 Plug 'https://github.com/uiiaoo/java-syntax.vim' " java syntax
 Plug 'https://github.com/vim-syntastic/syntastic' " Syntastic
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin' " NERDTree git
 call plug#end()
 
 " COC config
@@ -57,6 +57,48 @@ nnoremap <leader>f :NERDTreeFind<CR>
 
 " Start nerd tree window
 autocmd VimEnter * NERDTree | wincmd p 
+
+" Show git status
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeColorMapCustom = {
+    \ "Staged"    : "#0ee375",  
+    \ "Modified"  : "#d9bf91",  
+    \ "Renamed"   : "#51C9FC",  
+    \ "Untracked" : "#FCE77C",  
+    \ "Unmerged"  : "#FC51E6",  
+    \ "Dirty"     : "#FFBD61",  
+    \ "Clean"     : "#87939A",   
+    \ "Ignored"   : "#808080"   
+    \ }
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
+" Bind .. to previous directory
+autocmd FileType nerdtree nnoremap <buffer> <leader>.. :call NERDTreeGoUp()<CR>
+
+function! NERDTreeGoUp()
+    let l:current_path = expand('%:p:h')
+    execute 'cd ' . l:current_path
+    NERDTreeFind
+endfunction
+
+function! NERDTreeGoUp()
+    let l:current_path = expand('%:p:h')
+    execute 'cd ' . l:current_path
+    NERDTreeFind
+endfunction
+
 
 " Buffer Mappings
 nnoremap <Tab> :bnext<CR>
@@ -96,24 +138,6 @@ endfunction
 autocmd FileType java inoremap <buffer> <silent> /* <Esc>:call AddBlockComment()<CR>
 
 " LSP Config
-if executable('pylsp')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-if executable('eclipse.jdt.ls')
-    " Install eclipse.jdt.ls language server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'java',
-        \ 'cmd': {server_info -> ['eclipse.jdt.ls']},
-        \ 'allowlist': ['java'],
-        \ })
-endif
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -137,9 +161,9 @@ function! s:on_lsp_buffer_enabled() abort
     " refer to doc to add more commands
 endfunction
 
+" call s:on_lsp_buffer_enabled only for languages that has the server registered.
 augroup lsp_install
     au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
@@ -157,4 +181,3 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_java_checkers = ['java']
 let g:syntastic_java_java_checkers = ['java', 'checkstyle']
 let g:syntastic_java_checkstyle_args = ['--ignore=serial']
-
