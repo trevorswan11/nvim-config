@@ -79,7 +79,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Staged'    :'✚',
                 \ 'Untracked' :'✭',
                 \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
+               \ 'Unmerged'  :'═',
                 \ 'Deleted'   :'✖',
                 \ 'Dirty'     :'✗',
                 \ 'Ignored'   :'☒',
@@ -114,8 +114,9 @@ nmap <F8> :TagbarToggle<CR>
 " Color scheme change
 colorscheme jellybeans
 
-" File Finder
-nnoremap <leader>h :FZF<CR>
+" File Finder - first one is full dir, second is code dir
+" nnoremap <leader>h :FZF ~<CR>
+nnoremap <leader>h :cd C:\Users\Trevor\OneDrive\Documents\CWRU\Code<CR>:FZF<CR>
 
 " Auto complete delimiters and other common symbols
 inoremap ( ()<Left>
