@@ -13,6 +13,7 @@ set autochdir
 " QOL Mappings
 let mapleader = " "
 nnoremap ; :
+nnoremap <leader>11 :LspDocumentFormat<CR>
 vnoremap ; :
 vnoremap <Leader>pa :s/\\/\//g<CR>
 
@@ -82,7 +83,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                \ 'Unmerged'  :'═',
                 \ 'Deleted'   :'✖',
                 \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
@@ -112,7 +112,7 @@ nnoremap <leader>x :bd<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " Color scheme change
-colorscheme jellybeans
+colorscheme sonokai 
 
 " File Finder - first one is full dir, second is code dir
 " nnoremap <leader>h :FZF ~<CR>
@@ -124,7 +124,6 @@ inoremap [ []<Left>
 inoremap { {}<Left>
 inoremap ' ''<Left>
 inoremap " ""<Left>
-inoremap < <><Left>
 
 " Java block comments
 function! AddBlockComment()
