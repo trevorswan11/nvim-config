@@ -5,7 +5,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set smarttab
-set softtabstop
+set softtabstop=0
 set mouse=a
 set clipboard+=unnamedplus
 set autochdir
@@ -36,9 +36,7 @@ Plug 'https://github.com/junegunn/fzf' " File Finder - 2
 Plug 'https://github.com/prabirshrestha/vim-lsp' " lsp - 1
 Plug 'https://github.com/mattn/vim-lsp-settings' "lsp - 2
 Plug 'https://github.com/uiiaoo/java-syntax.vim' " java syntax
-Plug 'https://github.com/vim-syntastic/syntastic' " Syntastic
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin' " NERDTree git
-Plug 'https://github.com/iamcco/markdown-preview.nvim' " MD Preview
 
 call plug#end()
 
@@ -51,7 +49,7 @@ let g:airline_statusline_ontop=1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
 
 " NERDTree Config
 nnoremap <leader>e :NERDTreeFocus<CR>
@@ -96,17 +94,25 @@ function! NERDTreeGoUp()
     NERDTreeFind
 endfunction
 
-function! NERDTreeGoUp()
-    let l:current_path = expand('%:p:h')
-    execute 'cd ' . l:current_path
-    NERDTreeFind
-endfunction
-
-
 " Buffer Mappings
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>x :bd<CR>
+
+" Java block comments
+function! AddBlockComment()
+    if &filetype == 'java'
+        let col = col('.') - 1
+        let line = getline('.')
+        let before = strpart(line, 0, col)
+        let after = strpart(line, col)
+        let line = before . "/* */" . after
+        call setline('.', line)
+        call cursor('.', col + 3)
+    endif
+endfunction
+
+autocmd FileType java inoremap <buffer> <silent> /* <Esc>:call AddBlockComment()<CR>
 
 " Tagbar Config
 nmap <F8> :TagbarToggle<CR>
@@ -124,21 +130,6 @@ inoremap [ []<Left>
 inoremap { {}<Left>
 inoremap ' ''<Left>
 inoremap " ""<Left>
-
-" Java block comments
-function! AddBlockComment()
-    if &filetype == 'java'
-        let col = col('.') - 1
-        let line = getline('.')
-        let before = strpart(line, 0, col)
-        let after = strpart(line, col)
-        let line = before . "/* */" . after
-        call setline('.', line)
-        call cursor('.', col + 3)
-    endif
-endfunction
-
-autocmd FileType java inoremap <buffer> <silent> /* <Esc>:call AddBlockComment()<CR>
 
 " LSP Config
 function! s:on_lsp_buffer_enabled() abort
@@ -169,19 +160,3 @@ augroup lsp_install
     au!
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Ignore Syntastic serialization
-let g:syntastic_java_checkers = ['java']
-let g:syntastic_java_java_checkers = ['java', 'checkstyle']
-let g:syntastic_java_checkstyle_args = ['--ignore=serial']
-
