@@ -99,21 +99,6 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>x :bd<CR>
 
-" Java block comments
-function! AddBlockComment()
-    if &filetype == 'java'
-        let col = col('.') - 1
-        let line = getline('.')
-        let before = strpart(line, 0, col)
-        let after = strpart(line, col)
-        let line = before . "/* */" . after
-        call setline('.', line)
-        call cursor('.', col + 3)
-    endif
-endfunction
-
-autocmd FileType java inoremap <buffer> <silent> /* <Esc>:call AddBlockComment()<CR>
-
 " Tagbar Config
 nmap <F8> :TagbarToggle<CR>
 
