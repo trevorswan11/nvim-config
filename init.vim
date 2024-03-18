@@ -73,6 +73,8 @@ let g:NERDTreeColorMapCustom = {
     \ "Clean"     : "#87939A",   
     \ "Ignored"   : "#808080"   
     \ }
+
+" More Indicators using Nerd Font
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
