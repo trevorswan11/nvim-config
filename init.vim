@@ -105,7 +105,7 @@ nnoremap <leader>x :bd<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " Color scheme change
-colorscheme sonokai 
+colorscheme oceanicnext
 
 " File Finder - first one is full dir, second is code dir
 " nnoremap <leader>h :FZF ~<CR>
