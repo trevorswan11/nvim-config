@@ -13,7 +13,6 @@ set autochdir
 " QOL Mappings
 let mapleader = " "
 nnoremap ; :
-nnoremap <leader>11 :LspDocumentFormat<CR>
 vnoremap ; :
 vnoremap <Leader>pa :s/\\/\//g<CR>
 
@@ -23,25 +22,15 @@ call plug#begin()
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter' " TS
 Plug 'https://github.com/vim-airline/vim-airline' " Mode status bar
 Plug 'https://github.com/preservim/nerdtree' " File tree
-Plug 'https://github.com/neoclide/coc.nvim' " COC
 Plug 'https://github.com/tpope/vim-fugitive' " Git integration
-Plug 'https://github.com/preservim/tagbar' " Tagbar for variables
 Plug 'https://github.com/ryanoasis/vim-devicons' " Dev Icons
 Plug 'http://github.com/tpope/vim-surround' " Surround
-Plug 'https://github.com/tpope/vim-commentary' " Commenting
-Plug 'https://github.com/ap/vim-css-color' " CSS
-Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Colors!
 Plug 'https://github.com/junegunn/fzf.vim' " File Finder - 1
 Plug 'https://github.com/junegunn/fzf' " File Finder - 2
 Plug 'https://github.com/prabirshrestha/vim-lsp' " lsp - 1
 Plug 'https://github.com/mattn/vim-lsp-settings' "lsp - 2
-Plug 'https://github.com/uiiaoo/java-syntax.vim' " java syntax
-Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin' " NERDTree git
 
 call plug#end()
-
-" COC config
-inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
 " Airline Config
 let g:airline#extensions#tabline#enabled = 1
@@ -74,19 +63,6 @@ let g:NERDTreeColorMapCustom = {
     \ "Ignored"   : "#808080"   
     \ }
 
-" More Indicators using Nerd Font
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-               \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-
 " Bind .. to previous directory
 autocmd FileType nerdtree nnoremap <buffer> <leader>.. :call NERDTreeGoUp()<CR>
 
@@ -101,22 +77,12 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>x :bd<CR>
 
-" Tagbar Config
-nmap <F8> :TagbarToggle<CR>
-
 " Color scheme change
-colorscheme sonokai
+colorscheme habamax
 
 " File Finder - first one is full dir, second is code dir
 " nnoremap <leader>h :FZF ~<CR>
 nnoremap <leader>h :cd C:\Users\Trevor\OneDrive\Documents\CWRU\Code<CR>:FZF<CR>
-
-" Auto complete delimiters and other common symbols
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap ' ''<Left>
-inoremap " ""<Left>
 
 " LSP Config
 function! s:on_lsp_buffer_enabled() abort
