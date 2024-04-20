@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='C:\Users\Trevor\OneDrive\Documents\CWRU\Code\CSDS132\projects\project-four\src\main\java\projectFour'
+let g:netrw_dirhist_8='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src/test/java/projectFour'
+let g:netrw_dirhist_7='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src/test/java'
+let g:netrw_dirhist_6='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src/test'
+let g:netrw_dirhist_5='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src'
+let g:netrw_dirhist_4='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four'
+let g:netrw_dirhist_3='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src'
+let g:netrw_dirhist_2='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src/main'
+let g:netrw_dirhist_1='C:/Users/Trevor/OneDrive/Documents/CWRU/Code/CSDS132/projects/project-four/src/main/java'
+let g:netrw_dirhist_0='C:\Users\Trevor\OneDrive\Documents\CWRU\Code\CSDS132\projects\project-four\src\main\java\projectFour'
