@@ -24,10 +24,11 @@ Plug 'https://github.com/nvim-treesitter/nvim-treesitter' " TS
 Plug 'https://github.com/vim-airline/vim-airline' " Airline
 Plug 'https://github.com/vim-airline/vim-airline-themes' " Airline theme
 Plug 'https://github.com/ryanoasis/vim-devicons' " Dev Icons
+Plug 'https://github.com/terrortylor/nvim-comment' " Commenting
 Plug 'http://github.com/tpope/vim-surround' " Surround
 Plug 'https://github.com/prabirshrestha/vim-lsp' " lsp - 1
 Plug 'https://github.com/mattn/vim-lsp-settings' " lsp - 2
-Plug 'https://github.com/folke/tokyonight.nvim' " Colors!
+Plug 'https://github.com/catppuccin/nvim'
 
 call plug#end()
 
@@ -46,7 +47,7 @@ nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>x :bd<CR>
 
 " Color scheme change
-colorscheme tokyonight-moon
+colorscheme catppuccin-mocha
 
 " LSP Config
 function! s:on_lsp_buffer_enabled() abort
