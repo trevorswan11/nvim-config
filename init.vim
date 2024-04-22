@@ -21,11 +21,13 @@ nnoremap <Leader>e :Ex<CR>
 call plug#begin()
 
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter' " TS
-Plug 'https://github.com/vim-airline/vim-airline' " Mode status bar
+Plug 'https://github.com/vim-airline/vim-airline' " Airline
+Plug 'https://github.com/vim-airline/vim-airline-themes' " Airline theme
 Plug 'https://github.com/ryanoasis/vim-devicons' " Dev Icons
 Plug 'http://github.com/tpope/vim-surround' " Surround
 Plug 'https://github.com/prabirshrestha/vim-lsp' " lsp - 1
-Plug 'https://github.com/mattn/vim-lsp-settings' "lsp - 2
+Plug 'https://github.com/mattn/vim-lsp-settings' " lsp - 2
+Plug 'https://github.com/folke/tokyonight.nvim' " Colors!
 
 call plug#end()
 
@@ -36,6 +38,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
 
 " Buffer Mappings
 nnoremap <Tab> :bnext<CR>
@@ -43,7 +46,7 @@ nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>x :bd<CR>
 
 " Color scheme change
-colorscheme habamax
+colorscheme tokyonight-moon
 
 " LSP Config
 function! s:on_lsp_buffer_enabled() abort
